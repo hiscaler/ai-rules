@@ -5,6 +5,7 @@
 - 文件应该总是包含 `declare(strict_types=1)` 声明
 - 方法参数总是有类型约束，返回值总是有类型
 - 业务逻辑错误必须抛出异常，禁止直接返回 `false`
+- 每个属性、方法、常量、枚举常量、参数、返回值都应该有注释
 
 ## 异常处理
 
@@ -14,7 +15,7 @@
 
 ## 注释格式
 
-参考如下格式：
+### 属性注释参考如下格式：
 
 ```php
 /**
@@ -28,6 +29,20 @@
 /**
  * @var int 状态（1: 激活、2: 禁止）
  */
+```
+
+### 方法注释参考如下格式：
+
+```php
+/**
+ * 获取用户信息
+ * @param param $value 参数值
+ *
+ * @return string 姓名 
+ */
+function bar(string $value): string {
+    return $value;
+}
 ```
 
 ## 命名规范
@@ -148,6 +163,11 @@ enum OrderStatus: int
     case COMPLETED = 3;
     case CANCELLED = 4;
 
+    /**
+     * 获取枚举标签
+     *
+     * @return string
+     */
     public function label(): string
     {
         return match ($this) {
